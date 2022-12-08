@@ -4,20 +4,17 @@ namespace Biosfera3.Service
 {
     public class SensorService
     {
-        public Area _area { get; set; }
         public Sensor _sensor { get; set; }
         public Pesquisador _pesquisador { get; set; }
 
-        public SensorService(Area area, Sensor sensor, Pesquisador pesquisador)
+        public SensorService(Sensor sensor, Pesquisador pesquisador)
         {
-            _area = area;
             _sensor = sensor;
             _pesquisador = pesquisador;
         }
 
-        public void VerificaTemperaturaJardim(Sensor sensor)
+        public string VerificaTemperatura(Area local)
         {
-            var local = _area.Nome;
             var temperaturaAtual = _sensor.Temperatura;
             if (temperaturaAtual < 10)
             {
@@ -51,9 +48,8 @@ namespace Biosfera3.Service
             }
         }
 
-        public void VerificaUmidadeJardim()
+        public void VerificaUmidade(Area local)
         {
-            var local = _area.Nome;
             var umidadeAtual = _sensor.Umidade;
             if (umidadeAtual <= 10)
             {
@@ -72,9 +68,8 @@ namespace Biosfera3.Service
             }
         }
 
-        public void VerificaGasCarbonicoJardim()
+        public void VerificaGasCarbonico(Area local)
         {
-            var local = _area.Nome;
             var gasCarbonicoAtual = _sensor.GasCarbonico;
             if (gasCarbonicoAtual >= 800 && gasCarbonicoAtual <= 999)
             {
