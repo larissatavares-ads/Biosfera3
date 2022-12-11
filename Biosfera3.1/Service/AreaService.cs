@@ -11,13 +11,26 @@ public class AreaService : IAreaService
         _sensor = sensor;
     }
 
-    public Task<Area> Jardim(Area area)
+    public async Task Jardim(Sensor sensor)
     {
-        area.Nome = "Jardim";
-        area.Sensor = new Sensor();
-        area.Pesquisador_1 = new Pesquisador();
-        area.Pesquisador_2 = new Pesquisador();
-        area.Pesquisador_3 = new Pesquisador();
+        var area = sensor.area;
+        try
+        {
+            _sensor.VerificaTemperatura(area);
+            _sensor.VerificaUmidade(area);
+            _sensor.VerificaGasCarbonico(area);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+        
+    
+    public void Dormitorio(Sensor sensor)
+    {
+        var area = sensor.area;
 
         try
         {
@@ -30,34 +43,22 @@ public class AreaService : IAreaService
             Console.WriteLine(e);
             throw;
         }
-        
-        return 
-    }
-        
-    
-    public Task<Area> Dormitorio(Area area)
-    {
-        area.Nome = "Dormitorio";
-        area.Sensor = new Sensor();
-        area.Pesquisador_1 = new Pesquisador();
-        area.Pesquisador_2 = new Pesquisador();
-        area.Pesquisador_3 = new Pesquisador();
-
-        _sensor.VerificaTemperatura(area);
-        _sensor.VerificaUmidade(area);
-        _sensor.VerificaGasCarbonico(area);
     }
     
-    public Task<Area> Laboratorio(Area area)
+    public void Laboratorio(Sensor sensor)
     {
-        area.Nome = "Dormitorio";
-        area.Sensor = new Sensor();
-        area.Pesquisador_1 = new Pesquisador();
-        area.Pesquisador_2 = new Pesquisador();
-        area.Pesquisador_3 = new Pesquisador();
+        var area = sensor.area;
 
-        _sensor.VerificaTemperatura(area);
-        _sensor.VerificaUmidade(area);
-        _sensor.VerificaGasCarbonico(area);
+        try
+        {
+            _sensor.VerificaTemperatura(area);
+            _sensor.VerificaUmidade(area);
+            _sensor.VerificaGasCarbonico(area);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

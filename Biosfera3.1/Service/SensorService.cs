@@ -1,4 +1,5 @@
 ﻿using Biosfera3.Models;
+using Biosfera3.Repository;
 
 namespace Biosfera3.Service
 {
@@ -12,10 +13,21 @@ namespace Biosfera3.Service
             _sensor = sensor;
             _pesquisador = pesquisador;
         }
-
-        public string VerificaTemperatura(Area local)
+        private IVerificaParametros _param;
+        public SensorService(IVerificaParametros param)
         {
-            var temperaturaAtual = _sensor.Temperatura;
+            _param = param;
+        }
+
+        public void VerificaTemperatura(string local)
+        {
+            var pesquisador = _pesquisador.Nome;
+            Console.WriteLine($"Pesquisador:: {pesquisador}");
+
+            var get = _param.GetParametros(local);
+            
+
+            var temperaturaAtual = _sensor.temperatura;
             if (temperaturaAtual < 10)
             {
                 Console.WriteLine($"Cuidado a temperatura do {local} está baixa!");
@@ -48,9 +60,12 @@ namespace Biosfera3.Service
             }
         }
 
-        public void VerificaUmidade(Area local)
+        public void VerificaUmidade(string local)
         {
-            var umidadeAtual = _sensor.Umidade;
+            var pesquisador = _pesquisador.Nome;
+            Console.WriteLine($"Pesquisador:: {pesquisador}");
+
+            var umidadeAtual = _sensor.umidade;
             if (umidadeAtual <= 10)
             {
                 Console.WriteLine($"Cuidado! A umidade do {local} está muito baixa!");
@@ -68,9 +83,12 @@ namespace Biosfera3.Service
             }
         }
 
-        public void VerificaGasCarbonico(Area local)
+        public void VerificaGasCarbonico(string local)
         {
-            var gasCarbonicoAtual = _sensor.GasCarbonico;
+            var pesquisador = _pesquisador.Nome;
+            Console.WriteLine($"Pesquisador:: {pesquisador}");
+
+            var gasCarbonicoAtual = _sensor.gasCarbonico;
             if (gasCarbonicoAtual >= 800 && gasCarbonicoAtual <= 999)
             {
                 Console.WriteLine($"Cuidado! O gás carbonico do {local} está alto!");

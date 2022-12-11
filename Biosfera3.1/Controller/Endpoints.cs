@@ -18,7 +18,6 @@ namespace Biosfera3.Controller
         {
             var pesquisador = new Pesquisador()
             {
-                Id = model.Id,
                 Nome = model.Nome
             };
             await _pesquisadorService.SalvarPesquisador(pesquisador);
@@ -26,19 +25,14 @@ namespace Biosfera3.Controller
         }
         
         [HttpGet("verificaJardim")]
-        public async Task<IActionResult> GetAsync(Area model)
+        public async Task<IActionResult> GetAsync(Sensor model)
         {
-            var area = new Area()
+            var pesquisador = new Sensor()
             {
-                Id = model.Id,
-                Nome = model.Nome,
-                Sensor = model.Sensor,
-                Pesquisador_1 = model.Pesquisador_1,
-                Pesquisador_2 = model.Pesquisador_2,
-                Pesquisador_3 = model.Pesquisador_3
+                area = model.area,
+                pesquisador = model.pesquisador
             };
-            await _pesquisadorService.(pesquisador);
-            return Ok(pesquisador);
+            return Ok("Ok");
         }
     }
 }

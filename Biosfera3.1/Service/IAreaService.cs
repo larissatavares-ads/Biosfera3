@@ -4,7 +4,7 @@ namespace Biosfera3.Service;
 
 public interface IAreaService
 {
-    Task<Area> Jardim(Area area);
-    Task<Area> Dormitorio(Area area);
-    Task<Area> Laboratorio(Area area);
+    void Jardim(Sensor sensor);
+    void Dormitorio(Sensor sensor);
+    void Laboratorio(Sensor sensor);
 }

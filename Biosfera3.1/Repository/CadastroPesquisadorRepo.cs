@@ -15,10 +15,9 @@ namespace Biosfera3.Repository
         }
         public async Task SalvarPesquisador(Pesquisador pesquisador)
         {
-            string comando = $"INSERT INTO pesquisador (id, nome) VALUES (@Id, @Nome);";
+            string comando = $"INSERT INTO pesquisador (nome) VALUES (@Nome);";
             await using (var cmd = new NpgsqlCommand(comando, connection))
             {
-                cmd.Parameters.AddWithValue("id", pesquisador.Id);
                 cmd.Parameters.AddWithValue("nome", pesquisador.Nome);
 
                 await cmd.ExecuteNonQueryAsync();

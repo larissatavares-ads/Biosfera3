@@ -3,10 +3,10 @@ using Biosfera3.Repository;
 
 namespace Biosfera3.Service
 {
-    public class CadastroPesquisador : ICadastroPesquisadorService
+    public class CadastroPesquisadorService : ICadastroPesquisadorService
     {
         private ICadastroPesquisadorRepo _pesquisadorRepo;
-        public CadastroPesquisador(ICadastroPesquisadorRepo pesquisadorRepo)
+        public CadastroPesquisadorService(ICadastroPesquisadorRepo pesquisadorRepo)
         {
             _pesquisadorRepo = pesquisadorRepo;
         }
